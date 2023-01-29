@@ -1,0 +1,24 @@
+• docker run -d --name=grafana -p 3001:3000 -v grafana_config:/etc/grafana -v grafana_data:/var/lib/grafana -v grafana_logs:/var/log/grafana grafana/Grafana
+• Give password admin:admin and relace to new password
+Install MySql
+Step 1 : docker run -d --name mysqldb -p 3306:3306 -v 
+db_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=password 
+mysql:latest
+Step 2 : docker exec -it mysqldb bash
+Step 3 : mysql -u root –ppassword
+Step 4 : show databases;
+Step 5 : create database team;
+Step 6: USE team;
+Step 7 : CREATE TABLE person ( person_id INT NOT NULL PRIMARY KEY, fname
+VARCHAR(40) NULL, lname VARCHAR(40) NULL, age INT NOT NULL, created TIMESTAMP ); 
+Step 8 : Show tables;
+Step 9 :
+INSERT INTO person (person_id, fname, lname, age) VALUES (1,'Peter','Engineer', 32);
+INSERT INTO person (person_id, fname, lname, age) VALUES (2, 'Richard', 'Gaol', 27);
+INSERT INTO person (person_id, fname, lname, age) VALUES (3, 'Howard','Ken', 38);
+INSERT INTO person (person_id, fname, lname, age) VALUES (4, 'Lucy', 'Dey', 32);
+
+If you get any error:
+Command to add the port to firewall: firewall-cmd --permanent --zone=public --add-port=3306/tcp firewall-cmd --reload
+Step 10 : Click on Add Data source Give name 'MySQL', Add Host as your DNS IPV4 IP address and Database as team as above. It will add Datasource.
+Step 11 : Select the Data source in Grafana, Select the database 'team' on Grafana query generator and Monitorize the whole databse on dashboard.
